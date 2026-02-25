@@ -10,7 +10,7 @@ export default function LoadingSpinner({smallHeight}) {
       justify-center 
       items-center `}
     >
-      <ScaleLoader size={100} color = 'teal' />
+      <ScaleLoader size={100} color = 'green' />
     </div>
   )
 }
