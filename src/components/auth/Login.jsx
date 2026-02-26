@@ -12,10 +12,9 @@ const Login = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const { authData } = useContext(AuthContext);
-  const { login, loading, setLoading } = authData;
-
-  const handleSubmit = async (e) => {
+  const { login, loading, setLoading } = useContext(AuthContext);
+   
+    const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError("");
