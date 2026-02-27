@@ -45,8 +45,8 @@ const Login = () => {
         className="hidden lg:flex flex-1 bg-green-900 items-center justify-center p-12 relative overflow-hidden"
       >
         {/* Decorative circles */}
-        <div className="absolute top-[-100px] left-[-100px] w-[400px] h-[400px] rounded-full bg-green-400 opacity-30" />
-        <div className="absolute bottom-[-150px] right-[-100px] w-[500px] h-[500px] rounded-full bg-green-400 opacity-20" />
+        <div className="absolute -top-25 -left-25 w-100 h-100 rounded-full bg-green-400 opacity-30" />
+        <div className="absolute -bottom-37.5 -right-25 w-125 h-125 rounded-full bg-green-400 opacity-20" />
 
         <div className="relative z-10 text-white max-w-md">
           <motion.div
@@ -119,6 +119,7 @@ const Login = () => {
                 <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                 <input
                   type="email"
+                  name="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full pl-11 pr-4 py-3 rounded-xl border border-gray-200 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-200 focus:border-green-600 transition-all"
@@ -135,6 +136,7 @@ const Login = () => {
                 <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                 <input
                   type={showPassword ? "text" : "password"}
+                  name="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="w-full pl-11 pr-12 py-3 rounded-xl border border-gray-200 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-200 focus:border-green-600 transition-all"
@@ -154,7 +156,7 @@ const Login = () => {
             {/* Remember + Forgot */}
             <div className="flex items-center justify-between">
               <label className="flex items-center gap-2 text-sm text-gray-500 cursor-pointer">
-                <input type="checkbox" className="rounded border-gray-300 accent-green-900" />
+                <input type="checkbox" id="remeber-me" className="rounded border-gray-300 accent-green-900" />
                 Remember me
               </label>
               <a href="#" className="text-green-900 font-medium hover:underline text-sm">

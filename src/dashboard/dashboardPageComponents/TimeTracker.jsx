@@ -22,7 +22,7 @@ const TimeTracker = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.55, duration: 0.4 }}
-      className="bg-blue-600 text-white rounded-2xl p-5 overflow-hidden relative"
+      className="bg-green-800 text-white rounded-2xl p-5 overflow-hidden relative"
     >
       {/* Decorative circles */}
       <div className="absolute -right-10 -bottom-10 w-37.5 h-37.5 rounded-full border-20 border-white/10" />

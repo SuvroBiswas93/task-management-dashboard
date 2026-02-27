@@ -25,7 +25,7 @@ const ProjectAnalytics = ({ data }) => {
             </div>
 
             <div className="relative flex">
-                {/* Y-axis labels - hide on very small screens */}
+                {/* Y-axis labels */}
                 <div className="hidden xs:flex flex-col justify-between text-xs text-gray-400 pr-2 sm:pr-3 py-1 h-24 sm:h-35">
                     <span>{yAxisMax}</span>
                     <span>{Math.round(yAxisMax * 0.75)}</span>
@@ -34,41 +34,47 @@ const ProjectAnalytics = ({ data }) => {
                     <span>0</span>
                 </div>
 
-                {/* Grid lines */}
-                <div className="absolute left-0 xs:left-8 sm:left-10 right-0 h-24 sm:h-35 pointer-events-none">
-                    {[0, 1, 2, 3, 4].map((i) => (
-                        <div
-                            key={i}
-                            className="border-b border-dashed border-gray-200 w-full absolute"
-                            style={{ bottom: `${i * 25}%` }}
-                        />
-                    ))}
-                </div>
+                {/* Chart container */}
+                <div className="flex-1 relative">
+                    {/* Grid lines */}
+                    <div className="absolute inset-0 pointer-events-none">
+                        {[0, 1, 2, 3, 4].map((i) => (
+                            <div
+                                key={i}
+                                className="border-b border-dashed border-gray-200 w-full absolute"
+                                style={{ bottom: `${i * 25}%` }}
+                            />
+                        ))}
+                    </div>
 
-                {/* Bars */}
-                <div className="flex items-end justify-between gap-1 sm:gap-2 md:gap-3 h-24 sm:h-35 flex-1 relative">
-                    {values.map((val, i) => {
-                        const height = (val / yAxisMax) * 100;
+                    {/* Bars */}
+                    <div className="flex items-end justify-around gap-1 sm:gap-2 h-24 sm:h-35 relative z-10">
+                        {values.map((val, i) => {
+                            const height = (val / yAxisMax) * 100;
 
-                        return (
-                            <div key={i} className="flex flex-col items-center gap-1 sm:gap-2 flex-1 min-w-5">
-                                {val > 0 && (
-                                    <span className="text-[10px] sm:text-xs font-semibold text-gray-900 bg-gray-100 px-1 sm:px-2 py-0.5 rounded-md">
-                                        {val}
-                                    </span>
-                                )}
+                            return (
+                                <div key={i} className="flex flex-col items-center gap-1 sm:gap-2 flex-1 max-w-8">
+                                    {val > 0 && (
+                                        <span className="text-[10px] sm:text-xs font-semibold text-gray-900 bg-gray-100 px-1 sm:px-2 py-0.5 rounded-md">
+                                            {val}
+                                        </span>
+                                    )}
 
-                                <motion.div
-                                    initial={{ height: 0 }}
-                                    animate={{ height: `${height}%` }}
-                                    transition={{ delay: 0.4 + i * 0.05, duration: 0.5, ease: "easeOut" }}
-                                    className="w-full max-w-4 sm:max-w-6 md:max-w-8 rounded-lg bg-emerald-800"
-                                />
+                                    <div className="w-full h-full flex items-end">
+                                        <motion.div
+                                            initial={{ height: 0 }}
+                                            animate={{ height: `${height}%` }}
+                                            transition={{ delay: 0.4 + i * 0.05, duration: 0.5, ease: "easeOut" }}
+                                            className="w-full bg-emerald-800 rounded-lg"
+                                            style={{ height: '0%' }} // Fallback
+                                        />
+                                    </div>
 
-                                <span className="text-[10px] sm:text-xs text-gray-500 font-medium">{labels[i]}</span>
-                            </div>
-                        );
-                    })}
+                                    <span className="text-[10px] sm:text-xs text-gray-500 font-medium">{labels[i]}</span>
+                                </div>
+                            );
+                        })}
+                    </div>
                 </div>
             </div>
         </motion.div>
