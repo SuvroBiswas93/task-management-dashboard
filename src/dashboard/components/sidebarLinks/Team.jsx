@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import Sidebar from "../Sidebar";
 import TopBar from "../TopBar";
 import { AuthContext } from "../../../context/AuthProvider";
-import LoadingSpinner from "../../../components/loadingSpinner";
+import LoadingSpinner from "../../../components/loadingSpinner/LoadingSpinner";
 import { api } from "../../../services/api";
 import { Mail, Calendar } from "lucide-react";
 
