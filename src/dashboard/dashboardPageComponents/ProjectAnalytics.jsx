@@ -51,7 +51,7 @@ const ProjectAnalytics = ({ data }) => {
                         const height = (val / yAxisMax) * 100;
 
                         return (
-                            <div key={i} className="flex flex-col items-center gap-1 sm:gap-2 flex-1 min-w-[20px]">
+                            <div key={i} className="flex flex-col items-center gap-1 sm:gap-2 flex-1 min-w-5">
                                 {val > 0 && (
                                     <span className="text-[10px] sm:text-xs font-semibold text-gray-900 bg-gray-100 px-1 sm:px-2 py-0.5 rounded-md">
                                         {val}
