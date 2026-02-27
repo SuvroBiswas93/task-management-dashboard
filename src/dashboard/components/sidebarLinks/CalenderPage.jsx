@@ -8,11 +8,10 @@ import { api } from "../../../services/api";
 import { CalendarDays } from "lucide-react";
 
 const CalendarPage = () => {
-  const { user } = useContext(AuthContext);
+  const { user , loading, setLoading } = useContext(AuthContext);
   const token = user?.token;
 
   const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (!token) return;
@@ -23,7 +22,7 @@ const CalendarPage = () => {
         setData(d);
       })
       .finally(() => setLoading(false));
-  }, [token]);
+  }, [token,setLoading]);
 
   const analytics = data?.analytics || [];
 

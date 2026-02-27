@@ -5,7 +5,7 @@ import TopBar from "../TopBar";
 import { AuthContext } from "../../../context/AuthProvider";
 import { api } from "../../../services/api";
 import LoadingSpinner from "../../../components/loadingSpinner/LoadingSpinner";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line, AreaChart, Area } from "recharts";from "recharts";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line, AreaChart, Area } from "recharts";
 
 const COLORS = {
   primary: "#166534",      // green-800
@@ -17,10 +17,9 @@ const COLORS = {
 };
 
 const Analytics = () => {
-  const { user } = useContext(AuthContext);
+  const { user, loading, setLoading } = useContext(AuthContext);
   const token = user?.token;
   const [analytics, setAnalytics] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (!token) return;
@@ -32,7 +31,7 @@ const Analytics = () => {
         setAnalytics(formatted);
       })
       .finally(() => setLoading(false));
-  }, [token]);
+  }, [token,setLoading]);
 
   const tooltipStyle = {
     background: COLORS.card,

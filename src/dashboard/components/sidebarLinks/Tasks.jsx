@@ -7,13 +7,12 @@ import { AuthContext } from "../../../context/AuthProvider";
 import { MoreHorizontal } from "lucide-react";
 
 const Tasks = () => {
-  const { user } = useContext(AuthContext);
+  const { user , loading ,setLoading } = useContext(AuthContext);
   const token = user?.token;
 
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
+  
+ useEffect(() => {
     if (!token) return;
 
     api
@@ -23,7 +22,7 @@ const Tasks = () => {
         setProducts(formatted);
       })
       .finally(() => setLoading(false));
-  }, [token]);
+  }, [token,setLoading]);
 
   return (
     <div className="flex min-h-screen bg-gray-50">
