@@ -22,22 +22,22 @@ export const router = createBrowserRouter([
     errorElement:<ErrorPage />,
     children:[
       {
-        path: "/tasks",
+        path: "tasks",
         element: <ProtectedRoute><Tasks /></ProtectedRoute>,
         errorElement: <ErrorPage />
       },
       {
-        path: "/calendar",
+        path: "calendar",
         element: <ProtectedRoute><CalendarPage /></ProtectedRoute>,
         errorElement: <ErrorPage />
       },
       {
-        path: "/analytics",
+        path: "analytics",
         element: <ProtectedRoute><Analytics /></ProtectedRoute>,
         errorElement: <ErrorPage />
       },
       {
-        path:"/team",
+        path:"team",
         element:<ProtectedRoute><Team /></ProtectedRoute>,
         errorElement:<ErrorPage />
       }

@@ -9,10 +9,10 @@ import { AuthContext } from "../../context/AuthProvider";
 
 const menuItems = [
   { icon: LayoutDashboard, label: "Dashboard", path: "/dashboard", badge: null },
-  { icon: ListTodo, label: "Tasks", path: "/tasks", badge: "12" },
-  { icon: Calendar, label: "Calendar", path: "/calendar", badge: null },
-  { icon: BarChart3, label: "Analytics", path: "/analytics", badge: null },
-  { icon: Users, label: "Team", path: "/team", badge: null },
+  { icon: ListTodo, label: "Tasks", path: "tasks", badge: "12" },
+  { icon: Calendar, label: "Calendar", path: "calendar", badge: null },
+  { icon: BarChart3, label: "Analytics", path: "analytics", badge: null },
+  { icon: Users, label: "Team", path: "team", badge: null },
 ];
 
 const generalItems = [
