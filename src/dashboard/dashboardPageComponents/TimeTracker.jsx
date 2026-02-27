@@ -25,8 +25,8 @@ const TimeTracker = () => {
       className="bg-blue-600 text-white rounded-2xl p-5 overflow-hidden relative"
     >
       {/* Decorative circles */}
-      <div className="absolute -right-10 -bottom-10 w-[150px] h-[150px] rounded-full border-[20px] border-white/10" />
-      <div className="absolute -right-5 -bottom-5 w-[100px] h-[100px] rounded-full border-[15px] border-white/5" />
+      <div className="absolute -right-10 -bottom-10 w-37.5 h-37.5 rounded-full border-20 border-white/10" />
+      <div className="absolute -right-5 -bottom-5 w-25 h-25 rounded-full border-15 border-white/5" />
 
       <h3 className="font-semibold text-sm mb-4 relative z-10">Time Tracker</h3>
 
