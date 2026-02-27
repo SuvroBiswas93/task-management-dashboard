@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   LayoutDashboard, ListTodo, Calendar, BarChart3, Users,
@@ -21,7 +21,6 @@ const generalItems = [
 ];
 
 const Sidebar = () => {
-  const navigate = useNavigate();
   const location = useLocation();
   const { logout } = useContext(AuthContext);
 
@@ -29,7 +28,7 @@ const Sidebar = () => {
 
   const handleLogout = () => {
     logout();
-    navigate("/");
+    window.location.href = "/";
   };
 
   return (
@@ -59,9 +58,9 @@ const Sidebar = () => {
             {menuItems.map((item) => {
               const active = location.pathname === item.path;
               return (
-                <button
+                <Link
                   key={item.path}
-                  onClick={() => navigate(item.path)}
+                  to={item.path}
                   className={`flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium w-full transition-all duration-200
                     ${active ? "bg-green-600 text-white" : "text-gray-600 hover:bg-green-100 hover:text-green-700"}`}
                 >
@@ -73,7 +72,7 @@ const Sidebar = () => {
                       {item.badge}
                     </span>
                   )}
-                </button>
+                </Link>
               );
             })}
           </nav>
@@ -84,14 +83,14 @@ const Sidebar = () => {
           <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider px-2 mb-2">General</p>
           <nav className="space-y-1">
             {generalItems.map((item) => (
-              <button
+              <Link
                 key={item.path}
+                to={item.path}
                 className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium w-full text-gray-600 hover:bg-green-100 hover:text-green-700 transition-all duration-200"
-                onClick={() => navigate(item.path)}
               >
                 <item.icon className="w-5 h-5" />
                 <span>{item.label}</span>
-              </button>
+              </Link>
             ))}
             <button
               onClick={handleLogout}
@@ -152,9 +151,10 @@ const Sidebar = () => {
                 {menuItems.map((item) => {
                   const active = location.pathname === item.path;
                   return (
-                    <button
+                    <Link
                       key={item.path}
-                      onClick={() => { navigate(item.path); setIsOpen(false); }}
+                      to={item.path}
+                      onClick={() => setIsOpen(false)}
                       className={`flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium w-full transition-all duration-200
                         ${active ? "bg-green-600 text-white" : "text-gray-600 hover:bg-green-100 hover:text-green-700"}`}
                     >
@@ -166,7 +166,7 @@ const Sidebar = () => {
                           {item.badge}
                         </span>
                       )}
-                    </button>
+                    </Link>
                   );
                 })}
               </nav>
@@ -177,17 +177,21 @@ const Sidebar = () => {
               <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider px-2 mb-2">General</p>
               <nav className="space-y-1">
                 {generalItems.map((item) => (
-                  <button
+                  <Link
                     key={item.path}
+                    to={item.path}
+                    onClick={() => setIsOpen(false)}
                     className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium w-full text-gray-600 hover:bg-green-100 hover:text-green-700 transition-all duration-200"
-                    onClick={() => { navigate(item.path); setIsOpen(false); }}
                   >
                     <item.icon className="w-5 h-5" />
                     <span>{item.label}</span>
-                  </button>
+                  </Link>
                 ))}
                 <button
-                  onClick={() => { handleLogout(); setIsOpen(false); }}
+                  onClick={() => {
+                    handleLogout();
+                    setIsOpen(false);
+                  }}
                   className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium w-full text-gray-600 hover:bg-red-100 hover:text-red-600 transition-all duration-200"
                 >
                   <LogOut className="w-5 h-5" />
