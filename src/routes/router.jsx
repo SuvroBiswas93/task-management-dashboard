@@ -7,23 +7,30 @@ import Tasks from "../dashboard/components/sidebarLinks/Tasks";
 import CalendarPage from "../dashboard/components/sidebarLinks/CalenderPage";
 import Analytics from "../dashboard/components/sidebarLinks/Analytics";
 import Team from "../dashboard/components/sidebarLinks/Team";
+import ProductDetails from "../dashboard/components/sidebarLinks/ProductDetails";
+import UserDetails from "../dashboard/components/sidebarLinks/UserDetails";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Login/>,
+    element: <Login />,
     errorElement: <ErrorPage />,
   },
   {
-    path:"/dashboard",
+    path: "/dashboard",
     element: <ProtectedRoute>
       <Dashboard />
     </ProtectedRoute>,
-    errorElement:<ErrorPage />,
-    children:[
+    errorElement: <ErrorPage />,
+    children: [
       {
         path: "tasks",
         element: <ProtectedRoute><Tasks /></ProtectedRoute>,
+        errorElement: <ErrorPage />
+      },
+      {
+        path: "tasks/:id",
+        element: <ProtectedRoute><ProductDetails /></ProtectedRoute>,
         errorElement: <ErrorPage />
       },
       {
@@ -37,9 +44,16 @@ export const router = createBrowserRouter([
         errorElement: <ErrorPage />
       },
       {
-        path:"team",
-        element:<ProtectedRoute><Team /></ProtectedRoute>,
-        errorElement:<ErrorPage />
+        path: "team",
+        element: <ProtectedRoute><Team /></ProtectedRoute>,
+        errorElement: <ErrorPage />
+      },
+      {
+
+        path: "team/:id",
+        element: <ProtectedRoute><UserDetails /></ProtectedRoute>,
+        errorElement: <ErrorPage />
+
       }
     ]
   }

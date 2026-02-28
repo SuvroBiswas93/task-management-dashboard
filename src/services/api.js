@@ -49,6 +49,11 @@ export const api = {
     return res.data;
   },
 
+  getUser: async (id) => {
+    const res = await apiClient.get(`/users/${id}`);
+    return res.data;
+  },
+
   getAnalytics: async () => {
     const res = await apiClient.get("/analytics");
     return res.data;
@@ -59,9 +64,13 @@ export const api = {
     return res.data;
   },
 
+  getProduct: async (id) => {
+    const res = await apiClient.get(`/products/${id}`);
+    return res.data;
+  },
+
   getDashboard: async () => {
     const res = await apiClient.get("/dashboard");
     return res.data;
   },
 };
-

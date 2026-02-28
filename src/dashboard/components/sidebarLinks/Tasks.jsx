@@ -1,4 +1,5 @@
 import { useEffect, useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { api } from "../../../services/api";
 import { AuthContext } from "../../../context/AuthProvider";
@@ -6,7 +7,8 @@ import { MoreHorizontal } from "lucide-react";
 import LoadingSpinner from "../../../components/loadingSpinner/LoadingSpinner";
 
 const Tasks = () => {
-  const { user, loading, setLoading } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const { user, loading } = useContext(AuthContext);
   const token = user?.token;
 
   const [products, setProducts] = useState([]);
@@ -20,8 +22,17 @@ const Tasks = () => {
         const formatted = Array.isArray(res) ? res : res?.products || [];
         setProducts(formatted);
       })
-      .finally(() => setLoading(false));
-  }, [token, setLoading]);
+      
+  }, [token]);
+
+  const handleTaskClick = (productId) => {
+    navigate(`${productId}`);
+  };
+
+  const handleMoreOptions = (e, productId) => {
+    e.stopPropagation();
+    console.log("More options for product:", productId);
+  };
 
   return (
     <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mb-6">
@@ -41,7 +52,8 @@ const Tasks = () => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.06 }}
-                className="bg-[#fbfcfb] border border-gray-100 flex items-center gap-4 p-4 rounded-2xl"
+                onClick={() => handleTaskClick(product.id)}
+                className="bg-[#fbfcfb] border border-gray-100 flex items-center gap-4 p-4 rounded-2xl cursor-pointer hover:border-emerald-200 hover:shadow-sm transition-all"
               >
                 <div className="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-700 font-bold text-sm">
                   {product.name?.charAt(0)}
@@ -57,7 +69,10 @@ const Tasks = () => {
                   <p className="text-xs text-gray-500">sales</p>
                 </div>
 
-                <button className="p-2 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer">
+                <button
+                  className="p-2 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"
+                  onClick={(e) => handleMoreOptions(e, product.id)}
+                >
                   <MoreHorizontal className="w-4 h-4 text-gray-500" />
                 </button>
               </motion.div>
