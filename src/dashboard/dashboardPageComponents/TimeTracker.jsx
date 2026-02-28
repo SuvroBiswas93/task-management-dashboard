@@ -1,6 +1,5 @@
-import { motion } from "framer-motion";
-import { Pause, Play, Square } from "lucide-react";
 import { useState, useEffect } from "react";
+import timeTrackerBg from "../../assets/timeTrackerBg.svg";
 
 const TimeTracker = () => {
   const [seconds, setSeconds] = useState(5048);
@@ -18,48 +17,51 @@ const TimeTracker = () => {
   const format = (n) => String(n).padStart(2, "0");
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.55, duration: 0.4 }}
-      className="bg-green-800 text-white rounded-2xl p-5 overflow-hidden relative"
-    >
-      {/* Decorative circles */}
-      <div className="absolute -right-10 -bottom-10 w-37.5 h-37.5 rounded-full border-20 border-white/10" />
-      <div className="absolute -right-5 -bottom-5 w-25 h-25 rounded-full border-15 border-white/5" />
+    <div className="relative overflow-hidden rounded-2xl p-4 text-white min-h-[208px]">
+      <div className="pointer-events-none absolute inset-0 z-0 bg-[#0b3a24]" />
+      <img
+        src={timeTrackerBg}
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover"
+      />
 
-      <h3 className="font-semibold text-sm mb-4 relative z-10">Time Tracker</h3>
+      <h3 className="relative z-10 mb-3 text-sm font-medium text-white/90">Time Tracker</h3>
 
-      <p className="text-4xl font-extrabold tracking-wide relative z-10 font-mono">
+      <p className="relative z-10 mt-1 text-center font-light tracking-[0.02em] text-[50px] leading-none">
         {format(h)}:{format(m)}:{format(s)}
       </p>
 
-      <div className="flex items-center gap-3 mt-4 relative z-10">
-
-        {/* Pause / Resume Toggle */}
+      <div className="relative z-10 mt-6 flex items-center justify-center gap-2.5">
         <button
           onClick={() => setRunning(!running)}
-          className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center hover:bg-white/30 transition-colors"
+          className="h-10 w-10 rounded-full bg-white/90 text-[#2d6a2d] transition-opacity hover:opacity-90 flex items-center justify-center cursor-pointer"
+          aria-label={running ? "Pause timer" : "Resume timer"}
         >
           {running ? (
-            <Pause className="w-5 h-5" />
+            <span className="flex items-center gap-1">
+              <span className="h-3.5 w-[3.5px] rounded bg-[#2d6a2d]" />
+              <span className="h-3.5 w-[3.5px] rounded bg-[#2d6a2d]" />
+            </span>
           ) : (
-            <Play className="w-5 h-5" />
+            <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 1.5L12.5 8L2 14.5V1.5Z" fill="#2d6a2d" />
+            </svg>
           )}
         </button>
 
-        {/* Stop Button */}
         <button
           onClick={() => {
             setRunning(false);
             setSeconds(0);
           }}
-          className="w-10 h-10 rounded-xl bg-red-600 flex items-center justify-center hover:bg-red-700 transition-colors"
+          className="h-10 w-10 rounded-full bg-[#e8393a] transition-opacity hover:opacity-90 flex items-center justify-center cursor-pointer"
+          aria-label="Stop timer"
         >
-          <Square className="w-5 h-5" />
+          <span className="h-3 w-3 rounded-[2px] bg-white" />
         </button>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

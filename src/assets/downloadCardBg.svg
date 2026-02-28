@@ -1,0 +1,28 @@
+<svg width="220" height="170" viewBox="0 0 220 170" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="dlBase" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(28 126) rotate(-22) scale(210 190)">
+      <stop offset="0" stop-color="#0D5E38"/>
+      <stop offset="0.48" stop-color="#07291B"/>
+      <stop offset="1" stop-color="#020C08"/>
+    </radialGradient>
+    <linearGradient id="dlTopFade" x1="110" y1="0" x2="110" y2="70" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#031109" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#031109" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="220" height="170" rx="18" fill="url(#dlBase)"/>
+
+  <!-- Right-side partial ring arcs -->
+  <path d="M72 210C120 152 166 114 248 80" stroke="#71E671" stroke-opacity="0.26" stroke-width="5"/>
+  <path d="M69 198C117 142 163 106 244 72" stroke="#61D962" stroke-opacity="0.30" stroke-width="4.5"/>
+  <path d="M66 186C114 132 160 98 240 66" stroke="#55CA58" stroke-opacity="0.34" stroke-width="4"/>
+  <path d="M63 174C111 122 157 91 236 61" stroke="#4ABC50" stroke-opacity="0.36" stroke-width="3.5"/>
+  <path d="M60 163C108 113 154 84 232 56" stroke="#40A949" stroke-opacity="0.33" stroke-width="3"/>
+
+  <!-- Dark contour -->
+  <path d="M76 214C124 156 171 118 252 84" stroke="#001B0F" stroke-opacity="0.26" stroke-width="6"/>
+  <path d="M73 202C121 146 168 110 248 76" stroke="#001B0F" stroke-opacity="0.23" stroke-width="5"/>
+
+  <rect width="220" height="170" rx="18" fill="url(#dlTopFade)"/>
+</svg>

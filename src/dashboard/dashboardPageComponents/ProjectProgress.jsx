@@ -1,88 +1,89 @@
-import { motion } from "framer-motion";
-
-const ProjectProgress = ({ data }) => {
-    
-  const completed = data?.completed || 45;
-  const inProgress = data?.inProgress || 30;
-  const pending = data?.pending || 25;
-  const total = completed + inProgress + pending || 1;
-  
-  // Calculate percentage for the main progress (showing completed)
-  const percentage = Math.round((completed / total) * 100) || 0;
-
-  const radius = 60;
-  const circumference = 2 * Math.PI * radius;
-  const offset = circumference - (percentage / 100) * circumference;
+const ProjectProgress = () => {
+  const percentage = 41;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.5, duration: 0.4 }}
-      className="bg-white rounded-2xl p-5 border border-gray-200 transition-all duration-300"
-    >
-      <h3 className="font-semibold text-gray-900 mb-6">Project Progress</h3>
-      
-      <div className="flex items-center gap-8">
-        {/* Circular Progress */}
-        <div className="relative w-35 h-35 shrink-0">
-          <svg className="w-full h-full -rotate-90" viewBox="0 0 140 140">
-            <circle
-              cx="70"
-              cy="70"
-              r={radius}
+    <div className="bg-white rounded-2xl p-5 h-full">
+      <h3 className="font-semibold text-gray-900 mb-4">Project Progress</h3>
+
+      <div className="flex flex-col items-center">
+        <div className="relative w-64 h-40 shrink-0">
+          <svg className="w-full h-full" viewBox="0 0 320 210">
+            <defs>
+              <pattern
+                id="pendingPattern"
+                width="6"
+                height="6"
+                patternUnits="userSpaceOnUse"
+                patternTransform="rotate(45)"
+              >
+                <line x1="0" y1="0" x2="0" y2="6" stroke="#9ca3af" strokeWidth="2" />
+              </pattern>
+            </defs>
+
+            <path
+              d="M45 175 A115 115 0 0 1 275 175"
               fill="none"
-              stroke="#e5e7eb" 
-              strokeWidth="12"
-            />
-            <motion.circle
-              cx="70"
-              cy="70"
-              r={radius}
-              fill="none"
-              stroke="#166534" 
-              strokeWidth="12"
+              stroke="#e6e7ea"
+              strokeWidth="26"
               strokeLinecap="round"
-              strokeDasharray={circumference}
-              initial={{ strokeDashoffset: circumference }}
-              animate={{ strokeDashoffset: offset }}
-              transition={{ delay: 0.6, duration: 1.2, ease: "easeOut" }}
+              pathLength="100"
+            />
+
+            <path
+              d="M45 175 A115 115 0 0 1 275 175"
+              fill="none"
+              stroke="#4f8f5c"
+              strokeWidth="26"
+              strokeLinecap="round"
+              pathLength="100"
+              strokeDasharray="70 30"
+            />
+
+            <path
+              d="M45 175 A115 115 0 0 1 275 175"
+              fill="none"
+              stroke="#1f5f33"
+              strokeWidth="26"
+              strokeLinecap="round"
+              pathLength="100"
+              strokeDasharray="14 86"
+              strokeDashoffset="-66"
+            />
+
+            <path
+              d="M45 175 A115 115 0 0 1 275 175"
+              fill="none"
+              stroke="url(#pendingPattern)"
+              strokeWidth="26"
+              strokeLinecap="butt"
+              pathLength="100"
+              strokeDasharray="16 84"
+              strokeDashoffset="-84"
             />
           </svg>
 
-          <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <span className="text-3xl font-bold text-gray-900">{percentage}%</span>
-            <span className="text-xs text-gray-500">Project Ended</span>
+          <div className="absolute inset-0 flex flex-col items-center justify-center pt-10">
+            <span className="text-4xl font-semibold leading-none text-black">{percentage}%</span>
+            <span className="text-xs text-emerald-700">Project Ended</span>
           </div>
         </div>
 
-        {/* Legend */}
-        <div className="flex flex-col gap-3">
+        <div className="flex items-center justify-center gap-5 -mt-2">
           <div className="flex items-center gap-2">
-            <span className="w-3 h-3 rounded-full bg-[#166534]" /> 
-            <span className="text-sm text-gray-700">Completed</span>
+            <span className="w-2.5 h-2.5 rounded-full bg-[#4F8F5C]" />
+            <span className="text-xs text-emerald-700">Completed</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="w-3 h-3 rounded-full bg-[#eab308]" /> 
-            <span className="text-sm text-gray-700">In Progress</span>
+            <span className="w-2.5 h-2.5 rounded-full bg-[#1F5F33]" />
+            <span className="text-xs text-emerald-700">In Progress</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="w-3 h-3 rounded-full bg-[#6b7280]" /> 
-            <span className="text-sm text-gray-700">Pending</span>
+            <span className="w-2.5 h-2.5 rounded-full bg-[#6b7280]" />
+            <span className="text-xs text-emerald-700">Pending</span>
           </div>
         </div>
       </div>
-
-      {(completed || inProgress || pending) && (
-        <div className="mt-4 pt-4 border-t border-gray-100 text-xs text-gray-500">
-          <div className="flex justify-between">
-            <span>Completed: {completed}</span>
-            <span>In Progress: {inProgress}</span>
-            <span>Pending: {pending}</span>
-          </div>
-        </div>
-      )}
-    </motion.div>
+    </div>
   );
 };
 

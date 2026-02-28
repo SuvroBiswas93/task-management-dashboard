@@ -6,12 +6,12 @@ import LoadingSpinner from "../../../components/loadingSpinner/LoadingSpinner";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line, AreaChart, Area } from "recharts";
 
 const COLORS = {
-  primary: "#166534",      // green-800
-  border: "#e5e7eb",       // gray-200
-  muted: "#9ca3af",        // gray-400
-  foreground: "#111827",   // gray-900
-  success: "#22c55e",      // green-500
-  card: "#ffffff",          // white
+  primary: "#166534",
+  border: "#e5e7eb",
+  muted: "#9ca3af",
+  foreground: "#111827",
+  success: "#22c55e",
+  card: "#ffffff",
 };
 
 const Analytics = () => {
@@ -41,19 +41,15 @@ const Analytics = () => {
 
   return (
     <>
-      {/* Page Header */}
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         className="mb-6"
       >
-        <h1 className="text-2xl font-bold text-gray-900">Analytics</h1>
-        <p className="text-sm text-gray-500">
-          Visualize your project performance and trends.
-        </p>
+        <h1 className="text-2xl font-semibold text-gray-900">Analytics</h1>
+        <p className="text-sm text-gray-500 mt-1">Visualize your project performance and trends.</p>
       </motion.div>
 
-      {/* Loading */}
       {loading ? (
         <div className="flex justify-center py-12">
           <LoadingSpinner />
@@ -65,7 +61,7 @@ const Analytics = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="bg-white p-4 rounded-xl shadow"
+            className="bg-white p-4 rounded-2xl"
           >
             <h3 className="font-semibold text-gray-900 mb-4">Views Over Time</h3>
             <ResponsiveContainer width="100%" height={220}>
@@ -96,7 +92,7 @@ const Analytics = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="bg-white p-4 rounded-xl shadow"
+            className="bg-white p-4 rounded-2xl"
           >
             <h3 className="font-semibold text-gray-900 mb-4">Clicks Over Time</h3>
             <ResponsiveContainer width="100%" height={220}>
@@ -115,7 +111,7 @@ const Analytics = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="bg-white p-4 rounded-xl shadow lg:col-span-2"
+            className="bg-white p-4 rounded-2xl lg:col-span-2"
           >
             <h3 className="font-semibold text-gray-900 mb-4">Conversions Trend</h3>
             <ResponsiveContainer width="100%" height={220}>

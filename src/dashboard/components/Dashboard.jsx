@@ -1,147 +1,111 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { motion } from "framer-motion";
+import React, { useContext, useEffect, useState } from "react";
 import { Plus, Download } from "lucide-react";
-import { Outlet, useLocation } from 'react-router'; // Add useLocation
-import TopBar from './TopBar';
-import Sidebar from './Sidebar';
+import { Outlet, useLocation } from "react-router";
+import TopBar from "./TopBar";
+import Sidebar from "./Sidebar";
 import { AuthContext } from "../../context/AuthProvider";
-import { api } from '../../services/api';
-import LoadingSpinner from '../../components/loadingSpinner/LoadingSpinner';
-import StatsCards from '../dashboardPageComponents/StatsCards';
-import ProjectAnalytics from '../dashboardPageComponents/ProjectAnalytics';
-import Reminders from '../dashboardPageComponents/Reminders';
-import ProjectList from '../dashboardPageComponents/ProjecList';
-import TimeTracker from '../dashboardPageComponents/TimeTracker';
-import ProjectProgress from '../dashboardPageComponents/ProjectProgress';
-import TeamCollaboration from '../dashboardPageComponents/TeamCollaboration';
+import { api } from "../../services/api";
+import LoadingSpinner from "../../components/loadingSpinner/LoadingSpinner";
+import StatsCards from "../dashboardPageComponents/StatsCards";
+import ProjectAnalytics from "../dashboardPageComponents/ProjectAnalytics";
+import Reminders from "../dashboardPageComponents/Reminders";
+import ProjectList from "../dashboardPageComponents/ProjecList";
+import TimeTracker from "../dashboardPageComponents/TimeTracker";
+import ProjectProgress from "../dashboardPageComponents/ProjectProgress";
+import TeamCollaboration from "../dashboardPageComponents/TeamCollaboration";
 
 export default function Dashboard() {
   const { user, loading } = useContext(AuthContext);
-  const location = useLocation(); // Get current location
+  const location = useLocation();
   const token = user?.token;
-
   const [dashboardData, setDashboardData] = useState(null);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
     if (!token) return;
     api
       .getDashboard(token)
       .then((data) => setDashboardData(data))
-      .catch(console.error)
-      
+      .catch(console.error);
   }, [token]);
 
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-
-  // Check  (index route)
   const isDashboardIndex = location.pathname === "/dashboard";
 
   return (
-    <div className="relative min-h-screen bg-gray-100 w-full">
-      {/* Mobile Hamburger button */}
-      <button
-        className="sm:hidden fixed top-4 left-4 z-50 p-2 rounded-lg bg-green-600 text-white"
-        onClick={() => setSidebarOpen(true)}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-
-      <div className="grid grid-cols-12 gap-1">
-        {/* Desktop Sidebar */}
-        <div className="hidden sm:block col-span-3 m-1">
+    <div className="relative min-h-screen bg-[#DAD9DC] p-4 sm:p-5">
+      <div className="mx-auto h-[calc(100vh-2rem)] sm:h-[calc(100vh-2.5rem)] rounded-[30px] bg-white p-3 sm:p-4">
+        <div className="flex gap-3 h-full">
+        <div className="hidden lg:block w-64 shrink-0">
           <Sidebar />
         </div>
 
-        {/* Mobile Sidebar */}
-        {sidebarOpen && <Sidebar isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />}
+        <Sidebar mobileOnly isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />
 
-        {/* Main Content */}
-        <div className="col-span-12 sm:col-span-9 flex flex-col m-1">
-          <TopBar />
-          
-          {/* Only show header and dashboard content on the main dashboard route */}
+        <div className="flex-1 min-w-0 overflow-y-auto scrollbar-hide">
+          <TopBar onMenuClick={() => setSidebarOpen(true)} />
+
           {isDashboardIndex ? (
-            <>
-              {/* Header */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4 sm:mb-6 pt-4 px-2"
-              >
-                <div className=' '>
-                  <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Dashboard</h1>
-                  <p className="text-xs sm:text-sm text-gray-500 py-1">
+            <div className="mt-2 rounded-xl px-1 sm:px-2 pb-6 bg-[#F7F7F7]">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4 sm:mb-5 pt-4">
+                <div>
+                  <h1 className="text-[38px] leading-none font-semibold text-gray-900">Dashboard</h1>
+                  <p className="text-sm text-gray-500 mt-1">
                     Plan, prioritize, and accomplish your tasks with ease.
                   </p>
                 </div>
 
-                <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto">
-                  <button className="flex-1 sm:flex-initial flex items-center justify-center gap-2 bg-emerald-600 text-white px-3 sm:px-4 py-2 sm:py-2.5 rounded-2xl sm:rounded-3xl text-xs sm:text-sm font-semibold hover:opacity-90 transition-opacity whitespace-nowrap">
-                    <Plus className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                <div className="flex items-center gap-3 w-full sm:w-auto">
+                  <button className="flex-1 sm:flex-none flex items-center justify-center gap-2 bg-emerald-700 text-white px-4 py-2.5 rounded-full text-sm font-semibold hover:opacity-90 transition-opacity whitespace-nowrap cursor-pointer">
+                    <Plus className="w-4 h-4" />
                     <span>Add Project</span>
                   </button>
 
-                  <button className="flex-1 sm:flex-initial flex items-center justify-center gap-2 border border-gray-300 bg-white text-gray-900 px-3 sm:px-4 py-2 sm:py-2.5 rounded-2xl sm:rounded-3xl text-xs sm:text-sm font-semibold hover:bg-gray-100 transition-colors whitespace-nowrap">
-                    <Download className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                  <button className="flex-1 sm:flex-none flex items-center justify-center gap-2 border border-gray-300 bg-white text-gray-900 px-4 py-2.5 rounded-full text-sm font-semibold hover:bg-gray-50 transition-colors whitespace-nowrap cursor-pointer">
+                    <Download className="w-4 h-4" />
                     <span>Import Data</span>
                   </button>
                 </div>
-              </motion.div>
+              </div>
 
-              {/* Stats */}
               {loading ? (
                 <LoadingSpinner className="my-4" />
               ) : (
                 <StatsCards data={dashboardData} />
               )}
 
-              {/* Middle Row */}
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 mt-4">
-                <div className="lg:col-span-4">
-                  <ProjectAnalytics data={dashboardData} />
-                </div>
-                <div className="lg:col-span-4">
-                  <Reminders />
-                </div>
-                <div className="lg:col-span-4">
-                  <ProjectList data={dashboardData} />
-                </div>
-              </div>
+              <div className="grid grid-cols-1 xl:grid-cols-12 gap-4 mt-4">
+                <div className="xl:col-span-9 space-y-4">
+                  <div className="grid grid-cols-1 md:grid-cols-10 gap-4">
+                    <div className="md:col-span-7">
+                      <ProjectAnalytics data={dashboardData} />
+                    </div>
+                    <div className="md:col-span-3">
+                      <Reminders />
+                    </div>
+                  </div>
 
-              {/* Bottom Row */}
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 mt-4">
-                <div className="lg:col-span-4">
-                  <TeamCollaboration data={dashboardData} />
+                  <div className="grid grid-cols-1 md:grid-cols-10 gap-4">
+                    <div className="md:col-span-6">
+                      <TeamCollaboration data={dashboardData} />
+                    </div>
+                    <div className="md:col-span-4">
+                      <ProjectProgress data={dashboardData} />
+                    </div>
+                  </div>
                 </div>
-                <div className="lg:col-span-4">
-                  <ProjectProgress data={dashboardData} />
-                </div>
-                <div className="lg:col-span-4">
+
+                <div className="xl:col-span-3 grid grid-cols-1 gap-4">
+                  <ProjectList data={dashboardData} />
                   <TimeTracker />
                 </div>
               </div>
-            </>
+            </div>
           ) : (
-            /* For child routes, only show the Outlet with some padding */
-            <div className="pt-4 px-2">
+            <div className="pt-4 px-4 bg-[#F7F7F7] mt-2 rounded-xl min-h-[calc(100vh-10rem)]">
               <Outlet />
             </div>
           )}
-
-          {/* Only show the Outlet for index route  */}
-          {isDashboardIndex && (
-            <div className="mt-4 p-4">
-              <Outlet />
-            </div>
-          )}
+        </div>
         </div>
       </div>
     </div>

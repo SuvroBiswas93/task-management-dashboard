@@ -1,1 +1,22 @@
 @import "tailwindcss";
+
+/* Striped pattern for analytics bars */
+.bar-striped {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 3px,
+    rgba(255, 255, 255, 0.3) 3px,
+    rgba(255, 255, 255, 0.3) 6px
+  );
+}
+
+/* Hide scrollbar while preserving scroll behavior */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
