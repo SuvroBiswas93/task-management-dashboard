@@ -25,6 +25,7 @@ apiClient.interceptors.request.use((config) => {
 apiClient.interceptors.response.use(
   (response) => response,
   (error) => {
+    console.log(error)
     const message =
       error.response?.data?.message || "Something went wrong, try again.";
     return Promise.reject(new Error(message));
