@@ -8,7 +8,7 @@ import {
 import { AuthContext } from "../../context/AuthProvider";
 
 const menuItems = [
-  { icon: LayoutDashboard, label: "Dashboard", path: "", badge: null }, // Empty path for index
+  { icon: LayoutDashboard, label: "Dashboard", path: "", badge: null },
   { icon: ListTodo, label: "Tasks", path: "tasks", badge: "12" },
   { icon: Calendar, label: "Calendar", path: "calendar", badge: null },
   { icon: BarChart3, label: "Analytics", path: "analytics", badge: null },
@@ -16,8 +16,8 @@ const menuItems = [
 ];
 
 const generalItems = [
-  { icon: Settings, label: "Settings", path: "/settings" },
-  { icon: HelpCircle, label: "Help", path: "/help" },
+  { icon: Settings, label: "Settings" }, 
+  { icon: HelpCircle, label: "Help" }, 
 ];
 
 const Sidebar = ({ isOpen, setIsOpen }) => {
@@ -29,7 +29,6 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
     window.location.href = "/";
   };
 
-  // Helper function to check if a link is active
   const isActiveLink = (path) => {
     if (path === "") {
       return location.pathname === "/dashboard";
@@ -81,14 +80,13 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
           <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider px-2 mb-2">General</p>
           <nav className="space-y-1">
             {generalItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium w-full text-gray-600 hover:bg-green-100 hover:text-green-700 transition-all duration-200"
+              <div
+                key={item.label}
+                className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium w-full text-gray-400 cursor-default"
               >
                 <item.icon className="w-5 h-5" />
                 <span>{item.label}</span>
-              </Link>
+              </div>
             ))}
             <button
               onClick={handleLogout}
@@ -135,7 +133,6 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
             </button>
           </div>
 
-          {/* Mobile sidebar content - same as desktop but with close functionality */}
           <div className="px-2">
             {/* Logo */}
             <div className="px-2 py-4 flex items-center gap-3">
@@ -178,15 +175,13 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
               <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider px-2 mb-2">General</p>
               <nav className="space-y-1">
                 {generalItems.map((item) => (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    onClick={() => setIsOpen(false)}
-                    className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium w-full text-gray-600 hover:bg-green-100 hover:text-green-700 transition-all duration-200"
+                  <div
+                    key={item.label}
+                    className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium w-full text-gray-400 cursor-default"
                   >
                     <item.icon className="w-5 h-5" />
                     <span>{item.label}</span>
-                  </Link>
+                  </div>
                 ))}
                 <button
                   onClick={() => {
@@ -202,7 +197,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
             </div>
 
             {/* Mobile App Card */}
-            <div className="mt-auto px-2 pb-5 ">
+            <div className="mt-auto px-2 pb-5">
               <div className="bg-green-800 rounded-2xl p-4 text-white">
                 <div className="flex items-center gap-2 mb-2">
                   <Smartphone className="w-5 h-5" />

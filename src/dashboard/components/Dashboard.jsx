@@ -130,7 +130,7 @@ export default function Dashboard() {
               </div>
             </>
           ) : (
-            /* For child routes, only show the Outlet with some padding */
+            /* For child routes, only show the Outlet  */
             <div className="pt-4 px-2">
               <Outlet />
             </div>
