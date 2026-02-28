@@ -25,8 +25,8 @@ const menuItems = [
 ];
 
 const generalItems = [
-  { icon: Settings, label: "Settings", path: "/settings" },
-  { icon: HelpCircle, label: "Help", path: "/help" },
+  { icon: Settings, label: "Settings"},
+  { icon: HelpCircle, label: "Help" },
 ];
 
 const Sidebar = ({ isOpen, setIsOpen, mobileOnly = false }) => {
@@ -77,7 +77,7 @@ const Sidebar = ({ isOpen, setIsOpen, mobileOnly = false }) => {
                   {active && (
                     <span className="absolute left-0 top-1/2 -translate-y-1/2 h-6 w-1 rounded-r-full bg-emerald-700" />
                   )}
-                  <item.icon className={`w-[18px] h-[18px] ${active ? "text-emerald-700" : ""}`} />
+                  <item.icon className={`w-4.55 h-4.5 ${active ? "text-emerald-700" : ""}`} />
                   <span className="flex-1 text-left">{item.label}</span>
                   {item.badge && (
                     <span
@@ -104,7 +104,7 @@ const Sidebar = ({ isOpen, setIsOpen, mobileOnly = false }) => {
                 to={item.path}
                 className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium w-full text-gray-500 hover:bg-emerald-50 hover:text-emerald-700 transition-all duration-200"
               >
-                <item.icon className="w-[18px] h-[18px]" />
+                <item.icon className="w-4.5 h-4.5" />
                 <span>{item.label}</span>
               </Link>
             ))}
@@ -112,7 +112,7 @@ const Sidebar = ({ isOpen, setIsOpen, mobileOnly = false }) => {
               onClick={handleLogout}
               className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium w-full text-gray-500 hover:bg-red-50 hover:text-red-600 transition-all duration-200 cursor-pointer"
             >
-              <LogOut className="w-[18px] h-[18px]" />
+              <LogOut className="w-4.5 h-4.5" />
               <span>Logout</span>
             </button>
           </nav>
@@ -200,7 +200,7 @@ const Sidebar = ({ isOpen, setIsOpen, mobileOnly = false }) => {
                       {active && (
                         <span className="absolute left-0 top-1/2 -translate-y-1/2 h-6 w-1 rounded-r-full bg-emerald-700" />
                       )}
-                      <item.icon className={`w-[18px] h-[18px] ${active ? "text-emerald-700" : ""}`} />
+                      <item.icon className={`w-4.5 h-4.5 ${active ? "text-emerald-700" : ""}`} />
                       <span className="flex-1 text-left">{item.label}</span>
                       {item.badge && (
                         <span
@@ -228,7 +228,7 @@ const Sidebar = ({ isOpen, setIsOpen, mobileOnly = false }) => {
                     onClick={() => setIsOpen(false)}
                     className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium w-full text-gray-500 hover:bg-emerald-50 hover:text-emerald-700 transition-all duration-200"
                   >
-                    <item.icon className="w-[18px] h-[18px]" />
+                    <item.icon className="w-4.5 h-4.5" />
                     <span>{item.label}</span>
                   </Link>
                 ))}
@@ -239,7 +239,7 @@ const Sidebar = ({ isOpen, setIsOpen, mobileOnly = false }) => {
                   }}
                   className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium w-full text-gray-500 hover:bg-red-50 hover:text-red-600 transition-all duration-200 cursor-pointer"
                 >
-                  <LogOut className="w-[18px] h-[18px]" />
+                  <LogOut className="w-4.5 h-4.5" />
                   <span>Logout</span>
                 </button>
               </nav>

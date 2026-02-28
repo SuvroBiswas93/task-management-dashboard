@@ -49,7 +49,7 @@ const TeamCollaboration = ({ data }) => {
     <div className="bg-white rounded-2xl p-5 h-full">
       <div className="flex items-center justify-between mb-5">
         <h3 className="font-semibold text-gray-900 text-lg">Team Collaboration</h3>
-        <button className="flex items-center gap-1.5 text-sm font-semibold text-[#2f9a78] border border-[#b8dfcb] bg-transparent px-4 py-1.5 rounded-xl hover:bg-[#f6fbf9] transition-colors cursor-pointer">
+        <button className="flex items-center gap-1.5 text-sm font-semibold text-[#2f9a78] border border-[#b8dfcb] bg-transparent px-4 py-1.5 rounded-3xl hover:bg-[#f6fbf9] transition-colors cursor-pointer">
           <Plus className="w-3.5 h-3.5" /> Add Member
         </button>
       </div>

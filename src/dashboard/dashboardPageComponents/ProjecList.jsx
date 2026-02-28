@@ -31,7 +31,7 @@ const ProjectList = ({ data }) => {
     <div className="bg-white rounded-2xl p-5">
       <div className="flex items-center justify-between mb-3">
         <h3 className="font-semibold text-gray-900 text-lg">Project</h3>
-        <button className="flex items-center gap-1 text-sm font-medium text-emerald-700 border border-emerald-700/55 px-3 py-1 rounded-xl hover:bg-emerald-50 transition-colors cursor-pointer">
+        <button className="flex items-center gap-1 text-sm font-medium text-emerald-700 border border-emerald-700/55 px-3 py-1 rounded-3xl hover:bg-emerald-50 transition-colors cursor-pointer">
           <Plus className="w-3.5 h-3.5" /> New
         </button>
       </div>
