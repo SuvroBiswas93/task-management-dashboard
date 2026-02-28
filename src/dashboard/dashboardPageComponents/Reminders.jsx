@@ -11,14 +11,14 @@ const Reminders = () => {
     >
       <h3 className="font-semibold text-gray-900 mb-4">Reminders</h3>
 
-      <div className="bg-emerald-200 rounded-xl p-4">
-        <p className="font-semibold text-gray-900 text-sm">
+      <div className="">
+        <p className="font-semibold text-green-800 text-lg">
           Meeting with Arc Company
         </p>
         <p className="text-xs text-gray-500 mt-1">
           Time : 02.00 pm - 04.00 pm
         </p>
-        <button className="mt-3 flex items-center gap-2 bg-emerald-800 text-white px-4 py-2 rounded-lg text-sm font-medium hover:opacity-90 transition-opacity">
+        <button className="mt-3 flex items-center gap-2 bg-linear-to-r cursor-pointer from-emerald-900 to-emerald-700 text-white px-4 py-2 rounded-3xl text-sm font-medium hover:opacity-90 transition-opacity">
           <Video className="w-4 h-4" />
           Start Meeting
         </button>

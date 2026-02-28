@@ -100,7 +100,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
 
         {/* Mobile App Card */}
         <div className="mt-auto px-2 pb-5">
-          <div className="bg-green-800 rounded-2xl p-4 text-white">
+          <div className="bg-linear-to-b from-emerald-900 to-emerald-500 rounded-2xl p-4 text-white">
             <div className="flex items-center gap-2 mb-2">
               <Smartphone className="w-5 h-5" />
               <span className="text-sm font-semibold">Download our Mobile App</span>
@@ -198,7 +198,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
 
             {/* Mobile App Card */}
             <div className="mt-auto px-2 pb-5">
-              <div className="bg-green-800 rounded-2xl p-4 text-white">
+              <div className="bg-linear-to-b from-emerald-900 to-emerald-500 rounded-2xl p-4 text-white">
                 <div className="flex items-center gap-2 mb-2">
                   <Smartphone className="w-5 h-5" />
                   <span className="text-sm font-semibold">Download our Mobile App</span>

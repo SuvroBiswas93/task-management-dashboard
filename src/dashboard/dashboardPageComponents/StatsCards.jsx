@@ -45,7 +45,7 @@ const StatsCards = ({ data }) => {
           transition={{ delay: index * 0.1, duration: 0.4 }}
           className={
             card.highlight
-              ? "bg-emerald-800 text-white rounded-2xl p-5 transition-all duration-300"
+              ? "bg-linear-to-b from-emerald-900 to-emerald-500 text-white rounded-2xl p-5 transition-all duration-300"
               : "bg-white rounded-2xl p-5 border border-gray-200 transition-all duration-300"
           }
         >
@@ -59,7 +59,7 @@ const StatsCards = ({ data }) => {
             </p>
 
             <button
-              className={`w-8 h-8 rounded-lg flex items-center justify-center ${
+              className={`w-8 h-8 rounded-full flex items-center justify-center ${
                 card.highlight
                   ? "bg-white/20"
                   : "border border-gray-200"

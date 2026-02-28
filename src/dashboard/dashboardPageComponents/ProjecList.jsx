@@ -21,7 +21,7 @@ const ProjectList = ({ data }) => {
     >
       <div className="flex items-center justify-between mb-4">
         <h3 className="font-semibold text-gray-900">Products</h3>
-        <button className="flex items-center gap-1.5 text-xs font-semibold text-emerald-800 bg-emerald-200 px-3 py-1.5 rounded-lg hover:bg-emerald-800/10 transition-colors">
+        <button className="flex items-center gap-1.5 text-xs font-semibold text-emerald-800  px-3 py-1.5 rounded-3xl bg-gray-100 cursor-pointer hover:bg-emerald-800/10 transition-colors">
           <Plus className="w-3.5 h-3.5" /> New
         </button>
       </div>

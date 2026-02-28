@@ -3,7 +3,7 @@ import { Plus } from "lucide-react";
 
 const statusColors = {
   active: "text-green-500 bg-green-500/10",
-  inactive: "text-gray-500 bg-gray-200",
+  inactive: "text-red-500 bg-red-200",
 };
 
 const colorMap = [
@@ -56,7 +56,7 @@ const TeamCollaboration = ({ data }) => {
 
             <span
               className={`text-xs font-medium px-2.5 py-1 rounded-full capitalize ${
-                statusColors[user.status] || "text-gray-500 bg-gray-200"
+                statusColors[user.status] || "text-gray-500 bg-gray-200 "
               }`}
             >
               {user.status}

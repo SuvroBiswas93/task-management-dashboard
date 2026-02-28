@@ -22,7 +22,7 @@ const TimeTracker = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.55, duration: 0.4 }}
-      className="bg-green-800 text-white rounded-2xl p-5 overflow-hidden relative"
+      className="bg-linear-to-b from-emerald-500 to-emerald-900 text-white rounded-2xl p-5 overflow-hidden relative"
     >
       {/* Decorative circles */}
       <div className="absolute -right-10 -bottom-10 w-37.5 h-37.5 rounded-full border-20 border-white/10" />
@@ -39,7 +39,7 @@ const TimeTracker = () => {
         {/* Pause / Resume Toggle */}
         <button
           onClick={() => setRunning(!running)}
-          className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center hover:bg-white/30 transition-colors"
+          className="w-10 h-10 rounded-xl cursor-pointer bg-white/20 flex items-center justify-center hover:bg-white/30 transition-colors"
         >
           {running ? (
             <Pause className="w-5 h-5" />
@@ -54,7 +54,7 @@ const TimeTracker = () => {
             setRunning(false);
             setSeconds(0);
           }}
-          className="w-10 h-10 rounded-xl bg-red-600 flex items-center justify-center hover:bg-red-700 transition-colors"
+          className="w-10 h-10 rounded-xl cursor-pointer bg-red-600 flex items-center justify-center hover:bg-red-700 transition-colors"
         >
           <Square className="w-5 h-5" />
         </button>
