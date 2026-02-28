@@ -35,14 +35,12 @@ const ProjectList = ({ data }) => {
             transition={{ delay: 0.5 + i * 0.05 }}
             className="flex items-start gap-3"
           >
-            <div className={`w-2 h-2 rounded-full mt-1.5 ${colorMap[i % colorMap.length]}`} />
-            <div className="flex-1">
+            <div className={`w-3 h-3 rounded-full mt-1.5 ${colorMap[i % colorMap.length]}`} />
+            <div className="flex-1 justify-center items-center">
               <p className="text-sm font-medium text-gray-900">{product.name}</p>
               <p className="text-xs text-gray-500">${product.price} · {product.sales} sales</p>
             </div>
-            <span className="text-xs text-gray-500 capitalize bg-emerald-200 px-2 py-0.5 rounded">
-              {product.category}
-            </span>
+            
           </motion.div>
         ))}
       </div>
